@@ -13,7 +13,6 @@ class LabirintoTest {
 	@BeforeEach
 	void setUp() {
 		lab = new Labirinto();
-	
 	}
 
 	@Test

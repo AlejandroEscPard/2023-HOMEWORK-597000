@@ -1,5 +1,5 @@
- package it.uniroma3.diadia;
- import it.uniroma3.diadia.ambienti.*;
+package it.uniroma3.diadia;
+import it.uniroma3.diadia.ambienti.*;
 import it.uniroma3.diadia.attrezzi.*;
 import it.uniroma3.diadia.giocatore.*;
 /**
@@ -19,27 +19,27 @@ public class Partita {
 	private Giocatore giocatore;
 	Attrezzo lanterna;
 	Attrezzo osso;
-	
+
 	public Partita(){
 		lab = new Labirinto();
 		giocatore = new Giocatore();
 		giocatore.setCFU(10);
-		
+
 		stanzaCorrente=lab.stanze[0];
 		stanzaVincente=lab.stanze[8];
-		
+
 		//Creamos los attrezzos
-		
-    	Attrezzo lanterna = new Attrezzo("lanterna",3);
+
+		Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
-		
-    	lab.stanze[0].addAttrezzo(osso);
-    	lab.stanze[2].addAttrezzo(lanterna);
-    	
+
+		lab.stanze[0].addAttrezzo(osso);
+		lab.stanze[2].addAttrezzo(lanterna);
+
 		//Creamos el laberinto
-    	
+
 		this.finita = false;
-		
+
 
 	}
 
@@ -47,8 +47,8 @@ public class Partita {
 		return this.stanzaVincente;
 	}
 
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
+	public void setStanzaCorrente(Stanza direzione) {
+		this.stanzaCorrente = direzione;
 		int cfu = giocatore.getCFU();
 		giocatore.setCFU(cfu--);
 	}
@@ -56,7 +56,7 @@ public class Partita {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
-	
+
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
@@ -93,13 +93,23 @@ public class Partita {
 	public void setFinita() {
 		this.finita = true;
 	}
-	
+
 	public Giocatore getGiocatore() {
 		return this.giocatore;
 	}
-	
+
 	public Borsa getBorsa() {
 		return this.giocatore.getBorsa();
 	}
-	
+
+	public boolean giocatoreIsVivo() {
+		boolean vivo = true;
+		if (giocatore.getCFU()>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
 }
