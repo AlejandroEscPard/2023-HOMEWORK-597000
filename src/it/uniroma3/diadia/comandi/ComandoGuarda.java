@@ -1,11 +1,13 @@
 package it.uniroma3.diadia.comandi;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.*;
 
 public class ComandoGuarda implements Comando {
-	IOConsole ioconsole = new IOConsole();
+	IO ioconsole = new IOConsole();
 	Partita partita = new Partita();
+	Labirinto lab = new Labirinto();
 	
 	
 	/**
@@ -13,7 +15,7 @@ public class ComandoGuarda implements Comando {
 	 */
 	@Override
 	public void esegui(Partita partita) {
-		ioconsole.mostraMessaggio(partita.toString());	
+		ioconsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());	
 	}
 
 

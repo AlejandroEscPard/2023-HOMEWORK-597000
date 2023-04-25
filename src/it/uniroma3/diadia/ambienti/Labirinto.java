@@ -1,5 +1,7 @@
  package it.uniroma3.diadia.ambienti;
 
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 /**
  * Questa classe modella il labirinto dil gioco
  *
@@ -10,7 +12,7 @@
 
 public class Labirinto {
 
-	//Creamos las salas
+	
 	private Stanza stanzadipartenza;
 	private Stanza stanzavincente;
 	public Stanza stanze[];
@@ -23,7 +25,7 @@ public class Labirinto {
 		stanzavincente = new Stanza("Salida");
 
 		
-		//Creamos las salas
+		//abbiamo creato le stanze del labirinto
 		stanze[0] = stanzadipartenza;
 		stanze[1] = new Stanza("Recepcion");
 		stanze[2] = new Stanza("Biblioteca");
@@ -34,7 +36,16 @@ public class Labirinto {
 		stanze[7] = new Stanza("Despachos");
 		stanze[8] = stanzavincente;
 		
-		//Adjuntamos las salas adyacentes
+		Attrezzo linterna = new Attrezzo("linterna", 2);
+		Attrezzo passeparout = new Attrezzo("passeparout", 1);
+		
+		//aggiungiamo gli attrezzi
+
+		stanze[0].addAttrezzo(linterna );
+		stanze[0].addAttrezzo(passeparout );
+		
+		//aggiungiamo gli stanze adiacenti
+
 		
 		//Sala0
 		stanze[0].impostaStanzaAdiacente("Est", stanze[1]);
@@ -81,22 +92,34 @@ public class Labirinto {
 		stanze[8].impostaStanzaAdiacente("Oest", stanze[7]);
 	}
 	
+
+	/**
+	 * specificare la stanza di uscita
+	 */
 	public void setstanzadipartenza(Stanza nome) {
 		this.stanzadipartenza=nome;
 	}
-	
+	/**
+	 * specificare la stanza vicente
+	 */
 	public void setstanzavincente(Stanza nome) {
 		this.stanzavincente=nome;
 	}
-	
+	/**
+	 * ritorna la stanza di partenza
+	 */
 	public Stanza getstanzadipartenza() {
 		return this.stanzadipartenza;
 	}
-	
+	/**
+	 * ritorna la stanza vicente
+	 */
 	public Stanza getstanzavincente() {
 		return this.stanzavincente;
 	}
-	
+	/**
+	 * ritorna la array gli stanze
+	 */
 	public Stanza[] getStance() {
 		return stanze;
 	}

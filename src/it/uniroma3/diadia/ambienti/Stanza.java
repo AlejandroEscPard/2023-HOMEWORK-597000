@@ -17,12 +17,12 @@ public class Stanza {
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
+	public String nome;
     private Attrezzo[] attrezzi;
     private int numeroAttrezzi;
-    private Stanza[] stanzeAdiacenti;
-    private int numeroStanzeAdiacenti;
-	private String[] direzioni;
+    public Stanza[] stanzeAdiacenti;
+    public int numeroStanzeAdiacenti;
+	public String[] direzioni;
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -159,8 +159,8 @@ public class Stanza {
      * 		   null se l'attrezzo non e' presente.
 	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		Attrezzo attrezzoCercato;
-		attrezzoCercato = null;
+		Attrezzo attrezzoCercato = null;
+		
 		for (int i = 0; i < attrezzi.length; i++) {
 			if ( this.attrezzi[i] != null && attrezzi[i].getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzi[i];
@@ -174,8 +174,8 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		for (int i = 0; i < attrezzi.length;i++) {
-			if ( this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
+		for (int i = 0; i < this.numeroAttrezzi;i++) {
+			if (this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
 				this.attrezzi[i] = null;
 				this.numeroAttrezzi --;
 				
@@ -186,7 +186,10 @@ public class Stanza {
 		return false;
 	}
 
-
+	/**
+	 * Ritorna tutti gli direzioni
+	 * @return array direzioni
+	 */
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)

@@ -20,6 +20,7 @@ public class Partita {
 	Attrezzo lanterna;
 	Attrezzo osso;
 
+	
 	public Partita(){
 		lab = new Labirinto();
 		giocatore = new Giocatore();
@@ -30,8 +31,6 @@ public class Partita {
 
 		//Creamos los attrezzos
 
-		Attrezzo lanterna = new Attrezzo("lanterna",3);
-		Attrezzo osso = new Attrezzo("osso",1);
 
 		lab.stanze[0].addAttrezzo(osso);
 		lab.stanze[2].addAttrezzo(lanterna);
@@ -43,16 +42,25 @@ public class Partita {
 
 	}
 
+	/**
+	 * Ritorna la stanza vincente
+	 */
 	public Stanza getStanzaVincente() {
 		return this.stanzaVincente;
 	}
 
+	/**
+	 * Modifica la stanza corrente
+	 */
 	public void setStanzaCorrente(Stanza direzione) {
 		this.stanzaCorrente = direzione;
 		int cfu = giocatore.getCFU();
 		giocatore.setCFU(cfu--);
 	}
 
+	/**
+	 * Ritorna la stanza corrente
+	 */
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
@@ -94,16 +102,24 @@ public class Partita {
 		this.finita = true;
 	}
 
+	/**
+	 * Ritorna el giocatore de la partida
+	 */
 	public Giocatore getGiocatore() {
 		return this.giocatore;
 	}
 
+	/**
+	 * Ritorna la borsa sul giovatore
+	 */
 	public Borsa getBorsa() {
 		return this.giocatore.getBorsa();
 	}
 
+	/**
+	 * Ritorna true c'é il giocatore sei vivo e false c'é e morto
+	 */
 	public boolean giocatoreIsVivo() {
-		boolean vivo = true;
 		if (giocatore.getCFU()>0) {
 			return true;
 		}

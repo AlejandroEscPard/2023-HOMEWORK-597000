@@ -3,12 +3,12 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Borsa;
 
-public class ComandoAiuto implements Comando {
+public class ComandoBorsa implements Comando {
 	private String direzione;
 	IO ioconsole = new IOConsole();
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "guarda", "borsa"};
-
+	private Partita partita;
 
 	/**
 	 * esecuzione del comando
@@ -16,8 +16,9 @@ public class ComandoAiuto implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		ioconsole = new IOConsole();
-		for(int i=0; i< elencoComandi.length; i++) 
-			ioconsole.mostraMessaggio(elencoComandi[i]+" ");
+		Borsa borsa = partita.getBorsa();
+		ioconsole.mostraMessaggio(borsa.toString());
+		
 	}
 
 

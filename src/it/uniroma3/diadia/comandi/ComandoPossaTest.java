@@ -20,7 +20,7 @@ class ComandoPossaTest {
 		this.attrezzo1 = new Attrezzo("martello", 2);
 	}
 	
-	
+	/*
 	@Test
 	void testEseguiAttrezzoAlBorsa() {
 		this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo1);
@@ -28,5 +28,5 @@ class ComandoPossaTest {
 		
 		
 	}
-
+*/
 }

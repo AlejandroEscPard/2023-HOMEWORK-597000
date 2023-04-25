@@ -16,15 +16,15 @@ class ComandoVaiTest {
 
 	@BeforeEach
 	void SetUp() {
-		comandoVai = new ComandoVai(null);
+		comandoVai = new ComandoVai();
 		partita = new Partita();
 		ioconsole = new IOConsole();
 	}
-
+	/*
 	@Test
 	public void testEseguiDirezioneNulla() {
 		
 	}
-
+	*/
 
 }

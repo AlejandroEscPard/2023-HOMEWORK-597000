@@ -1,5 +1,7 @@
  package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -14,6 +16,7 @@ public class Borsa {
 	private Attrezzo[] attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
+	IO ioconsole = new IOConsole();
 	public Borsa() {
 		this(DEFAULT_PESO_MAX_BORSA);
 	}
@@ -27,20 +30,23 @@ public class Borsa {
 			return false;
 		if (this.numeroAttrezzi==10)
 			return false;
-		this.attrezzi[this.numeroAttrezzi] = attrezzo;
-		this.numeroAttrezzi++;
+		else
+			this.attrezzi[this.numeroAttrezzi] = attrezzo;
+			this.numeroAttrezzi++;
 		return true;
 	}
 	public int getPesoMax() {
 		return pesoMax;
 	}
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		Attrezzo a = null;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
-			if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
-				a = attrezzi[i];
-
-		return a;
+			if (this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(nomeAttrezzo))
+			{
+				return attrezzi[i];
+			
+			}
+		return null;
+			
 	}
 	public int getPeso() {
 		int peso = 0;

@@ -1,6 +1,8 @@
 package it.uniroma3.diadia.comandi;
 import java.util.Scanner;
 
+import it.uniroma3.diadia.ambienti.Stanza;
+
 public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi {
 
 	private String istruzione;
@@ -10,16 +12,19 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi {
 	String nomeComando = null;
 	String parametro = null;
 	Comando comando = null;
+	
+
 	if (scannerDiParole.hasNext())
 		nomeComando = scannerDiParole.next(); // prima parola: nome del comando
+		
 	if (scannerDiParole.hasNext())
 		parametro = scannerDiParole.next(); // seconda parola: eventuale parametro
 	if (nomeComando == null)
 		comando = new ComandoNonValido();
-	else if (nomeComando.equals("vai"))
-		comando = new ComandoVai(istruzione);
 	else if (nomeComando.equals("prendi"))
 		comando = new ComandoPrendi();
+	else if (nomeComando.equals("vai"))
+		comando = new ComandoVai();
 	else if (nomeComando.equals("posa"))
 		comando = new ComandoPossa();
 	else if (nomeComando.equals("aiuto"))
@@ -28,8 +33,9 @@ public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi {
 		comando = new ComandoFine();
 	else if (nomeComando.equals("guarda"))
 		comando = new ComandoGuarda();
+	else if (nomeComando.equals("borsa"))
+		comando = new ComandoBorsa();
 	else comando = new ComandoNonValido();
-	comando.setParametro(parametro);
 	return comando;
 }
 }

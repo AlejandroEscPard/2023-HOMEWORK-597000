@@ -25,20 +25,35 @@ public interface Comando {
 	public String param = null;
 	public String direzione = null;
 
+	/**
+	 * Fai l'esecuzione sul comando
+	 **/
 	public void esegui(Partita partita);
 
+	/**
+	 * Ritorna el nombre del comando
+	 * @return nome
+	 **/
 	public static String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Ritorna il parametro sul comando
+	 * @return param
+	 **/
 	public static String getParametro() {
 		return param;
 	}
-
+	
 	public default boolean sconosciuto() {
 		return (nome == null);
 	}
 
+	/**
+	 * Aggiunta il parametro sul comando
+	 * @param parametro
+	 **/
 	void setParametro(String parametro) ;
 	
 	

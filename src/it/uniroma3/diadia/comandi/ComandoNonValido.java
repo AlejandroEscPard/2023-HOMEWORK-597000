@@ -1,10 +1,11 @@
 package it.uniroma3.diadia.comandi;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.*;
 
 public class ComandoNonValido implements Comando {
-	IOConsole ioconsole = new IOConsole();
+	IO ioconsole = new IOConsole();
 	Partita partita = new Partita();
 	
 	
