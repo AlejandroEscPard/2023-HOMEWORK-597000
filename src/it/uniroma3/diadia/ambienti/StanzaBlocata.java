@@ -11,26 +11,29 @@ public class StanzaBlocata extends Stanza {
 	private String attrezzo;
 	public StanzaBlocata(String nome) {
 		super(nome);
-		attrezzo = "passe";
+		attrezzo = "piedediporco";
 		direzioneblocata = "Nord";
 	}
 	
 	@Override
 	public Stanza getStanzaAdiacente(String direzione) {
-        Stanza stanza = null;
+   
 		
-        if (this.partita.getStanzaCorrente().hasAttrezzo(attrezzo) != false) {
+        if (this.partita.getStanzaCorrente().hasAttrezzo(attrezzo)) {
    
         	ioconsole.mostraMessaggio("Direzione Blocata!!!");
         	return this.partita.getStanzaCorrente();
         }
         else {
-        	for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-            	if (this.direzioni[i].equals(direzione))
-            		stanza = this.stanzeAdiacenti[i];
-            return stanza;
+        	for(Stanza stanza : this.stanzeAdiacenti.values()) {
+            	if (stanza.getDirezioni().equals(direzione)) {
+            		return stanza;
+            		
+            	}
+            
+        	}
         }
-        
+        return null;
 	}
 
     /**

@@ -42,22 +42,14 @@ class StanzaTest {
 	@Test
 	void testimpostaStanzaAdiacente() {
 		//Se añade correctamente
-		assertTrue(stanza1.impostaStanzaAdiacente("nord", stanza1));
-		
+		stanza1.impostaStanzaAdiacente("nord", stanza1);
+		assertEquals(stanza1.getStanzaAdiacente("nord"), stanza1);
 	    //Sobrescribir correctamente
-		assertTrue(stanza1.impostaStanzaAdiacente("nord", stanza1));
-		assertTrue(stanza1.impostaStanzaAdiacente("nord", stanza2));
+		stanza1.impostaStanzaAdiacente("nord", stanza2);
 		assertEquals(stanza2, stanza1.getStanzaAdiacente("nord"));
 		
 		
-		//Añadimos pero esta lleno
-		stanza1.impostaStanzaAdiacente("nord", stanzaadiacente1);
-		stanza1.impostaStanzaAdiacente("sur", stanzaadiacente2);
-		stanza1.impostaStanzaAdiacente("est", stanzaadiacente3);
-		stanza1.impostaStanzaAdiacente("oest", stanzaadiacente4);
-		
-		assertNull(stanza1.impostaStanzaAdiacente("nord-oest", stanzaadiacente5));
-	}
+		}
 	
 	@Test
 	void testgetStanzaAdiacente() {

@@ -1,8 +1,8 @@
 package it.uniroma3.diadia;
+import java.util.LinkedList;
 import java.util.Scanner;
 public class IOSimulator implements IO {
-	private String[] arrayout;
-	private int indexin, indexout;
+	public LinkedList<String> arrayout;
 	public IOSimulator() {
 	}
 	@Override
@@ -11,8 +11,7 @@ public class IOSimulator implements IO {
 	 */
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
-		arrayout[indexout] = msg;
-		indexout++;
+		arrayout.add(msg);
 		
 	}
 	/**
@@ -22,15 +21,13 @@ public class IOSimulator implements IO {
 	public String leggiRiga() {
 		Scanner scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
-		arrayout[indexin] = riga;
-		indexin++;
+		arrayout.add(riga);
 		return riga;
 	}
 	public void stampamessagi(){
 		
-		for(int g = 0; g < arrayout.length;g++) {
-			System.out.println(arrayout[g]);
-			return;
+		for (String b : arrayout) {
+			System.out.print(b);
 		}
 		
 	}

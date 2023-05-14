@@ -20,28 +20,22 @@ public class Partita {
 	Attrezzo lanterna;
 	Attrezzo osso;
 
-	
 	public Partita(){
 		lab = new Labirinto();
 		giocatore = new Giocatore();
 		giocatore.setCFU(10);
-
-		stanzaCorrente=lab.stanze[0];
-		stanzaVincente=lab.stanze[8];
-
-		//Creamos los attrezzos
-
-
-		lab.stanze[0].addAttrezzo(osso);
-		lab.stanze[2].addAttrezzo(lanterna);
-
-		//Creamos el laberinto
-
-		this.finita = false;
-
+	}
+	
+	public Partita(Labirinto labirinto){
+		lab = labirinto;
+		giocatore = new Giocatore();
+		giocatore.setCFU(10);
+	}
+	
+	public void setLabirinto(Labirinto labirinto){
+		lab = labirinto;
 
 	}
-
 	/**
 	 * Ritorna la stanza vincente
 	 */

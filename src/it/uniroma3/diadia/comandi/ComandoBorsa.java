@@ -15,9 +15,20 @@ public class ComandoBorsa implements Comando {
 	 */
 	@Override
 	public void esegui(Partita partita) {
+		String riga;
 		ioconsole = new IOConsole();
 		Borsa borsa = partita.getBorsa();
-		ioconsole.mostraMessaggio(borsa.toString());
+		ioconsole.mostraMessaggio("Come vuoi il contenutto della borsa?:");
+		ioconsole.mostraMessaggio("1-OrdinatoPerPeso / 2-OrdinatoPerNome / 3-RaggruppatoPerPeso");
+		riga = ioconsole.leggiRiga();	
+		
+		if (riga.equals("1")) {
+			ioconsole.mostraMessaggio(borsa.getContenutoOrdinatoPerPeso().toString());
+		}else if (riga.equals("2")) {
+			ioconsole.mostraMessaggio(borsa.getContenutoOrdinatoPerNome().toString());
+		}else {
+			ioconsole.mostraMessaggio(borsa.getContenutoOrdinatoPerPeso().toString());
+		}
 		
 	}
 

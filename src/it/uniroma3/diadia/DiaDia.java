@@ -1,5 +1,7 @@
 package it.uniroma3.diadia;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.*;
 
 
@@ -28,9 +30,17 @@ public class DiaDia {
 
 	private Partita partita;
 	private IO ioconsole;
-
-	public DiaDia(IO io2) {
-		this.partita = new Partita();
+	private Labirinto labirinto;
+	
+	public DiaDia(IO io2, Labirinto lab) {
+		
+		this.partita = new Partita(new Labirinto());
+		this.ioconsole = io2;
+	}
+	
+	public void DiaDialab(IO io2, Labirinto lab) {
+		this.labirinto = lab;
+		this.partita = new Partita(new Labirinto());
 		this.ioconsole = io2;
 	}
 
@@ -74,7 +84,28 @@ public class DiaDia {
 	
 	public static void main(String[] argc) {
 		IO io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);
+		Labirinto monolocale = new LabirintoBuilder()
+				.addStanzaDiPartenza("salotto")
+				.addStanzaVincente("salotto")
+				.getLabirinto();
+		
+		Labirinto bilocale = new LabirintoBuilder()
+				.addStanzaDiPartenza("salotto")
+				.addStanzaVincente("camera")
+				.addAttrezzo("camera","letto", 10)
+				.addAdiacenza("salotto", "camera", "nord")
+				.getLabirinto();
+		
+		Labirinto trilocale = new LabirintoBuilder()
+				.addStanzaDiPartenza("salotto")
+				.addStanza("cucina")
+				.addAttrezzo("cucina","pentola", 1) // dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
+				.addStanzaVincente("camera")
+				.addAdiacenza("salotto", "cucina", "nord")
+				.addAdiacenza("cucina", "camera", "est")
+				.getLabirinto();
+		
+		DiaDia gioco = new DiaDia(io, monolocale);
 		gioco.gioca();
 	}
 
